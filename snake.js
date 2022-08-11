@@ -106,14 +106,27 @@ function move(direction) {
 
 // Create a new apple
 function newApple () {
+    do {
     appleX = Math.floor(Math.random()*WIDTH / gridSize) * gridSize;
     appleY = Math.floor(Math.random()*HEIGHT / gridSize) * gridSize;
+    } while (inSnake(appleX,appleY));
     const apple = document.createElement('div');
 
     apple.id = 'apple';
     apple.style.top = appleY+'px';
     apple.style.left = appleX+'px';
     board.appendChild(apple);
+
+    function inSnake (x,y) {
+        for (var i=0;i<snake.length-1;i++) {
+            var segmentTop = snake[i].offsetTop;
+            var segmentLeft = snake[i].offsetLeft;
+            if (segmentTop == y && segmentLeft == x){
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 // check if snake hits itself or walls
