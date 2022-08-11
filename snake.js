@@ -107,8 +107,8 @@ function move(direction) {
 // Create a new apple
 function newApple () {
     do {
-    appleX = Math.floor(Math.random()*WIDTH / gridSize) * gridSize;
-    appleY = Math.floor(Math.random()*HEIGHT / gridSize) * gridSize;
+        appleX = Math.floor(Math.random()*WIDTH / gridSize) * gridSize;
+        appleY = Math.floor(Math.random()*HEIGHT / gridSize) * gridSize;
     } while (inSnake(appleX,appleY));
     const apple = document.createElement('div');
 
